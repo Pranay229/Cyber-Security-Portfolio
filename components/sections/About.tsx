@@ -78,9 +78,11 @@ export default function About() {
               </div>
             </div>
 
-            <Button className="cyber-button w-full">
-              <Download className="mr-2 h-5 w-5" />
-              Download Full Resume
+            <Button className="cyber-button w-full" asChild>
+              <a href="/resume.pdf" download="Comptia +.pdf">
+                <Download className="mr-2 h-5 w-5" />
+                Download Full Resume
+              </a>
             </Button>
           </motion.div>
         </motion.div>
