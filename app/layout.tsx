@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://bolt.new/static/og_default.png',
+        url: '/og-default.png',
       },
     ],
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: 'Professional cybersecurity portfolio of Pranay kumar.Mallem showcasing SOC operations, threat detection, and AI-driven security solutions.',
     images: [
       {
-        url: 'https://bolt.new/static/og_default.png',
+        url: '/og-default.png',
       },
     ],
   },
