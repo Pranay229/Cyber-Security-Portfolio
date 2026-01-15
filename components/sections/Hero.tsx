@@ -65,9 +65,11 @@ export default function Hero() {
                 View Projects
               </Button>
             </Link>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background">
-              <Download className="mr-2 h-5 w-5" />
-              Download Resume
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-background" asChild>
+              <a href="/resume.pdf" download="Pranay_Kumar_Mallem_Resume.pdf">
+                <Download className="mr-2 h-5 w-5" />
+                Download Resume
+              </a>
             </Button>
             <Link href="#contact">
               <Button variant="outline" className="border-secondary text-secondary hover:bg-secondary hover:text-background">
