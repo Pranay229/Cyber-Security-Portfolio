@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { db } from '@/lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const socialLinks = [
   {
@@ -45,22 +47,19 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      // Direct Firebase submission (Client-side)
+      await addDoc(collection(db, 'contact_submissions'), {
+        ...formData,
+        timestamp: new Date().toISOString(),
       });
 
-      if (response.ok) {
-        toast({
-          title: 'Message sent successfully!',
-          description: 'Thank you for reaching out. I will respond within 24 hours.',
-        });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        throw new Error('Failed to send message');
-      }
+      toast({
+        title: 'Message sent successfully!',
+        description: 'Thank you for reaching out. I will respond within 24 hours.',
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
+      console.error('Error sending message:', error);
       toast({
         title: 'Error sending message',
         description: 'Please try again or contact me directly via email.',

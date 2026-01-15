@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Section from '@/components/Section';
-import { supabase, Skill } from '@/lib/supabase';
+import { db, Skill } from '@/lib/firebase';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import * as Icons from 'lucide-react';
 
 const categoryColors: Record<string, string> = {
@@ -19,13 +20,16 @@ export default function Skills() {
 
   useEffect(() => {
     async function fetchSkills() {
-      const { data, error } = await supabase
-        .from('skills')
-        .select('*')
-        .order('order_index', { ascending: true });
-
-      if (data && !error) {
+      try {
+        const q = query(collection(db, 'skills'), orderBy('order_index', 'asc'));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as Skill));
         setSkills(data);
+      } catch (error) {
+        console.error("Error fetching skills:", error);
       }
       setLoading(false);
     }

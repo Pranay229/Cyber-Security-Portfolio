@@ -1,0 +1,29 @@
+[debug] [2026-01-15T04:21:50.258Z] ----------------------------------------------------------------------
+[debug] [2026-01-15T04:21:50.261Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\new\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2026-01-15T04:21:50.261Z] CLI Version:   15.2.1
+[debug] [2026-01-15T04:21:50.261Z] Platform:      win32
+[debug] [2026-01-15T04:21:50.261Z] Node Version:  v25.2.1
+[debug] [2026-01-15T04:21:50.261Z] Time:          Thu Jan 15 2026 09:51:50 GMT+0530 (India Standard Time)
+[debug] [2026-01-15T04:21:50.262Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-01-15T04:21:50.263Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2026-01-15T04:21:53.094Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-01-15T04:21:53.094Z] > authorizing via signed-in user (pranaykumarmallem2@gmail.com)
+[debug] [2026-01-15T04:21:53.095Z] [iam] checking project noba-cloud-stack for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-01-15T04:21:53.095Z] Checked if tokens are valid: false, expires at: 1768034809102
+[debug] [2026-01-15T04:21:53.095Z] Checked if tokens are valid: false, expires at: 1768034809102
+[debug] [2026-01-15T04:21:53.096Z] > refreshing access token with scopes: []
+[debug] [2026-01-15T04:21:53.096Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-01-15T04:21:53.097Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-15T04:21:53.473Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-01-15T04:21:53.473Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-01-15T04:21:53.479Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/noba-cloud-stack:testIamPermissions [none]
+[debug] [2026-01-15T04:21:53.480Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/noba-cloud-stack:testIamPermissions x-goog-quota-user=projects/noba-cloud-stack
+[debug] [2026-01-15T04:21:53.480Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/noba-cloud-stack:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-15T04:21:53.853Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2026-01-15T04:21:53.853Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2026-01-15T04:21:55.209Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/noba-cloud-stack:testIamPermissions 200
+[debug] [2026-01-15T04:21:55.209Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/noba-cloud-stack:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-01-15T04:21:55.210Z] Checked if tokens are valid: true, expires at: 1768454512473
+[debug] [2026-01-15T04:21:55.210Z] Checked if tokens are valid: true, expires at: 1768454512473
+[debug] [2026-01-15T04:21:55.211Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/noba-cloud-stack [none]

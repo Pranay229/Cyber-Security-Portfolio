@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import Section from '@/components/Section';
-import { supabase, Project } from '@/lib/supabase';
+import { db, Project } from '@/lib/firebase';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -15,13 +16,16 @@ export default function Projects() {
 
   useEffect(() => {
     async function fetchProjects() {
-      const { data, error } = await supabase
-        .from('projects')
-        .select('*')
-        .order('order_index', { ascending: true });
-
-      if (data && !error) {
+      try {
+        const q = query(collection(db, 'projects'), orderBy('order_index', 'asc'));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as Project));
         setProjects(data);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
       }
       setLoading(false);
     }

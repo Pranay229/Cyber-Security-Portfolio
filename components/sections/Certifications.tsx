@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Award, CheckCircle, Clock, Target } from 'lucide-react';
 import Section from '@/components/Section';
-import { supabase, Certification } from '@/lib/supabase';
+import { db, Certification } from '@/lib/firebase';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { Badge } from '@/components/ui/badge';
 
 const statusConfig = {
@@ -26,13 +27,17 @@ export default function Certifications() {
 
   useEffect(() => {
     async function fetchCertifications() {
-      const { data, error } = await supabase
-        .from('certifications')
-        .select('*')
-        .order('created_at', { ascending: true });
+      try {
+        const q = query(collection(db, 'certifications'), orderBy('created_at', 'asc'));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        } as Certification));
 
-      if (data && !error) {
         setCertifications(data);
+      } catch (error) {
+        console.error("Error fetching certifications:", error);
       }
       setLoading(false);
     }
